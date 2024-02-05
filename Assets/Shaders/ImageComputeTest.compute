@@ -1,0 +1,30 @@
+#pragma kernel Main
+
+RWTexture2D<float4> OutputTexture;
+
+[numthreads(8, 8, 1)]
+void Main(uint3 id : SV_DispatchThreadID) 
+{
+    uint x = id.x;
+    uint y = id.y;
+    
+    uint width;
+    uint height;
+    OutputTexture.GetDimensions(width, height);
+    
+    float r;
+    float g;
+    float b;
+    
+    int tempX = x;
+    for (int i = 0; i <= width; i++)
+    {
+        r = (float) (x * (i / width));
+        g = (float) (0);
+        b = (float) (0);
+       
+    }
+    
+    OutputTexture[id.xy] = float4(r, g, b, 1);
+	
+}

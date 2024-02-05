@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 16e275c4a5c01d94cb634d7e3d8442c6
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 4795424024085857789
@@ -15,6 +15,9 @@ ModelImporter:
   - first:
       74: -3780384438312932060
     second: humanoid_Idle
+  - first:
+      74: 5693797844026563133
+    second: humanoid_Idle (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -29,13 +32,11 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'DEF-thigh.L' : position error
-      = 1.857575 mm\n\t'DEF-thigh.R' : position error = 1.857575 mm\nAvatar Rig Configuration
-      mis-match. Inbetween bone rotation in configuration does not match rotation
-      in animation file:\n\t'DEF-thigh.L.001' : rotation error = 0.373247 deg\n\t'DEF-shin.L.001'
-      : rotation error = 1.330505 deg\n\t'DEF-thigh.R.001' : rotation error = 2.529799
-      deg\n\t'DEF-shin.R.001' : rotation error = 1.237447 deg\n"
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'DEF-thigh.L.001'
+      : rotation error = 0.373247 deg\n\t'DEF-shin.L.001' : rotation error = 1.330505
+      deg\n\t'DEF-thigh.R.001' : rotation error = 2.529799 deg\n\t'DEF-shin.R.001'
+      : rotation error = 1.237447 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'humanoid_Sprint' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -218,13 +219,14 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -248,6 +250,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 1
@@ -2010,6 +2013,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
