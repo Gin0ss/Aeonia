@@ -10,6 +10,9 @@ namespace Drunken_Rum_Studios
 
         public bool isMoving, isInteracting, isSprinting, isWalking;
 
+        public float speedTransitionSmooth = 0.5f;
+        const float _walkSpeed = 0.2f, _jogSpeed = 0.55f, _runSpeed = 1;
+
         Rigidbody rB;
         Player_Movement pMove;
         Input_Manager iM;
@@ -31,20 +34,32 @@ namespace Drunken_Rum_Studios
             isMoving = iM.InputChecks[0];
             isSprinting = iM.InputChecks[1];
             isWalking = iM.InputChecks[2];
-            isInteracting = iM.InputChecks[3];
 
         }
 
         public void ManageMovement(float delta)
         {
-            Vector3 inputDir = iM.GetMoveDirection(delta);
-            if (isSprinting) { pMove.SpeedMod = 1.5f; }
-            if (isWalking) { pMove.SpeedMod = 0.5f; }
-            else { pMove.SpeedMod = 1; }
-            float speed = iM.MoveDistance * pMove.SpeedMod;
+            Vector3 moveDir = iM.GetMoveDirection(delta);
+            float moveSpeed = iM.moveInputMagnitude;
 
-            rB.MovePosition(pMove.MoveInDirection(rB.position, inputDir, speed, delta));
-            pA.UpdateAnimValue("Speed", speed);
+            float speedTarget = _jogSpeed;
+            if (isSprinting)
+            {
+                speedTarget = _runSpeed;
+
+            }
+            else if (isWalking)
+            {
+                speedTarget = _walkSpeed;
+
+            }
+            moveSpeed *= speedTarget;
+
+            Vector3 movePosition = pMove.MoveInDirection(rB.position, ref moveDir, ref moveSpeed, delta);
+
+            rB.MovePosition(movePosition);
+            transform.forward = moveDir;
+            pA.UpdateAnimValue("_speed", moveSpeed);
 
         }
 

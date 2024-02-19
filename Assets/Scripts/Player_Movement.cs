@@ -8,22 +8,33 @@ namespace Drunken_Rum_Studios
     {
         #region Variables
 
-        public float baseSpeed = 1;
+        public float baseSpeed = 1, turnDirSmooth = 0.25f, turnDirSpeed = 2;
         float speedMod = 1;
 
         #endregion
 
-        public float SpeedMod
+        public Vector3 MoveInDirection(Vector3 position, ref Vector3 moveDir, ref float speed, float delta)
         {
-            get { return speedMod * baseSpeed; }
-            set { speedMod = value;}
+            Vector3 targetDirection = transform.forward;
+            moveDir = ChangePlayerDirection(moveDir, delta);
+
+            targetDirection = Vector3.Lerp(targetDirection, moveDir, turnDirSmooth * delta);
+            targetDirection.y = 0;
+            targetDirection.Normalize();
+
+            speed *= speedMod;
+            position += targetDirection * moveDir.magnitude * speed * baseSpeed * delta;
+
+            return position;
 
         }
 
-        public Vector3 MoveInDirection(Vector3 position, Vector3 moveDir, float speed, float delta)
+        public Vector3 ChangePlayerDirection(Vector3 moveDir, float delta)
         {
-            position += moveDir * speed * delta;
-            return position;
+            Vector3 targetDir = transform.forward;
+            targetDir = Vector3.Lerp(targetDir, moveDir, turnDirSmooth * (delta * 60));
+
+            return targetDir;
 
         }
 

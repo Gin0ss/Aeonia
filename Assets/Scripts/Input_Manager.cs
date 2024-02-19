@@ -9,18 +9,11 @@ namespace Drunken_Rum_Studios
     {
         #region Variables
 
-        bool[] inputChecks = new bool[3];
-        public bool[] InputChecks { get; set; }
+        public bool[] InputChecks { get; set; } = new bool[3];
 
         public float sensitivityX = 1, sensitivityY = 1, moveDeadzone = 0.1f;
 
-        float moveDistance;
-        public float MoveDistance
-        {
-            get { return moveDistance; }
-            set { moveDistance = value; }
-
-        }
+        public float moveInputMagnitude { get; set; }
 
         Vector2 moveDir;
 
@@ -31,20 +24,21 @@ namespace Drunken_Rum_Studios
         void OnMovement(InputValue value)
         {
             moveDir = value.Get<Vector2>();
-            moveDistance = moveDir.magnitude;
-            inputChecks[0] = moveDistance >= moveDeadzone;
+            moveInputMagnitude = moveDir.magnitude;
+
+            InputChecks[0] = moveInputMagnitude >= moveDeadzone;
 
         }
 
         void OnSprint(InputValue value)
         {
-            inputChecks[1] = value.Get<bool>();
+            InputChecks[1] = value.isPressed;
 
         }
 
         void OnWalk(InputValue value)
         {
-            inputChecks[2] = value.Get<bool>();
+            InputChecks[2] = value.isPressed;
 
         }
 

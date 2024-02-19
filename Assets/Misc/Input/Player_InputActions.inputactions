@@ -16,21 +16,21 @@
                 },
                 {
                     "name": "Sprint",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "91046e55-878b-45f3-ba0d-7228217a1c5f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Walk",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "269451c0-93d7-47df-9e6b-5dc402d7a827",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
